@@ -21,6 +21,10 @@
     --body-font: 'Inter', sans-serif;
 }
 
+body {
+    background: linear-gradient(180deg, var(--secondary-color), var(--primary-color));
+}
+
 /* Base Styles */
 .header {
     background-color: var(--light-gray);
@@ -199,6 +203,28 @@ main {
     overflow: hidden;
 }
 
+/* Add blur effect to left half */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: inherit;
+    background-attachment: fixed;
+    filter: blur(8px);
+    z-index: 0;
+}
+
+/* Ensure text stays above the blur */
+.hero h1,
+.hero-text,
+.hero-buttons {
+    position: relative;
+    z-index: 1;
+}
+
 .hero h1 {
     font-family: var(--heading-font);
     font-size: 3.5rem;
@@ -373,6 +399,7 @@ main {
     background: var(--dark-slate);
     color: white;
     padding: 40px 32px;
+    border-top-left-radius: 70px;
 }
 
 .footer-content {
